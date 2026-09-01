@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Freewrite</title>
+  <!-- Renderer runs sandboxed; only inline styles/scripts from our files. -->
+  <meta http-equiv="Content-Security-Policy"
+        content="default-src 'self'; style-src 'self' 'unsafe-inline'; font-src 'self';" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <!-- Thin draggable strip so a frameless window can still be moved. -->
+  <div id="drag-strip"></div>
+
+  <div class="app">
+    <!-- Writing area -->
+    <main class="editor-wrap">
+      <textarea id="editor" class="editor" spellcheck="false"
+                placeholder="Begin writing"></textarea>
+
+      <!-- Transient inline notice (e.g. "prompt copied to clipboard"). -->
+      <div id="notice" class="notice" hidden></div>
+    </main>
+
+    <!-- Bottom toolbar -->
+    <footer id="toolbar" class="toolbar">
+      <div class="left">
+        <span id="font-size-btn" class="item" title="Font size">18px</span>
+        <span class="sep">•</span>
+        <span id="font-lato" class="item">Lato</span>
+        <span class="sep">•</span>
+        <span id="font-system" class="item">System</span>
+        <span class="sep">•</span>
+        <span id="font-serif" class="item">Serif</span>
+        <span class="sep">•</span>
+        <span id="font-mono" class="item">Mono</span>
+        <span class="sep">•</span>
+        <span id="font-random" class="item">Random</span>
+      </div>
+      <div class="right">
+        <span id="timer-btn" class="item" title="Click to start/pause, double-click to reset, scroll to adjust">15:00</span>
+        <span class="sep">•</span>
+        <span id="theme-btn" class="item">Dark</span>
+        <span class="sep">•</span>
+        <span id="chat-btn" class="item">Chat</span>
+        <span class="sep">•</span>
+        <span id="backspace-btn" class="item" title="Toggle whether Backspace/Delete work">Backspace</span>
+        <span class="sep">•</span>
+        <span id="pdf-btn" class="item">PDF</span>
+        <span class="sep">•</span>
+        <span id="new-entry-btn" class="item">New Entry</span>
+        <span class="sep">•</span>
+        <span id="history-btn" class="item" title="History">History</span>
+      </div>
+    </footer>
+
+    <!-- Font size popup -->
+    <div id="font-size-popup" class="popup" hidden>
+      <button class="size-option" data-size="16">16px</button>
+      <button class="size-option" data-size="18">18px</button>
+      <button class="size-option" data-size="20">20px</button>
+      <button class="size-option" data-size="22">22px</button>
+      <button class="size-option" data-size="24">24px</button>
+      <button class="size-option" data-size="26">26px</button>
+    </div>
+
+    <!-- Chat popup -->
+    <div id="chat-popup" class="popup" hidden>
+      <button id="chatgpt-option" class="chat-option">ChatGPT</button>
+      <div class="chat-divider"></div>
+      <button id="claude-option" class="chat-option">Claude</button>
+    </div>
+
+    <!-- History sidebar (hidden by default) -->
+    <aside id="sidebar" class="sidebar" hidden>
+      <div class="sidebar-header">
+        <span>History</span>
+        <button id="close-sidebar-btn" class="close-btn" title="Close">×</button>
+      </div>
+      <div id="entries-list" class="entries-list"></div>
+    </aside>
+  </div>
+
+  <script src="renderer.js"></script>
+</body>
+</html>

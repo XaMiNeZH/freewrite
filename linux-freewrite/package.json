@@ -1,0 +1,13 @@
+{
+  "name": "linux-freewrite",
+  "version": "0.1.0",
+  "description": "A distraction-free freewriting app for Linux (Electron port of the macOS/Windows freewrite).",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron ."
+  },
+  "license": "MIT",
+  "devDependencies": {
+    "electron": "^30.0.0"
+  }
+}
