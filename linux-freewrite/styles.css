@@ -35,6 +35,11 @@
 
 * { box-sizing: border-box; }
 
+/* Ensure the HTML `hidden` attribute always wins over the display rules below
+   (a class like .sidebar/.popup setting `display` would otherwise override the
+   user-agent [hidden] { display:none } rule). */
+[hidden] { display: none !important; }
+
 html, body {
   margin: 0;
   height: 100%;
